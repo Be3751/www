@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script type="module" src="lib.js"></script>
+    <script type="text/javascript" src="jikken3.js"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico">
+    <title>PIYOTOWN</title>
+</head>
+
+<body>
+    <div id=header>
+        <h1>PIYOTOWN</h1>
+        <p>情報工学実験3@ISDL</p>
+    </div>
+
+    <div id="main-content">
+
+        <div class="controll-box">
+            <a>検索条件</a>
+            <form onsubmit="onClickSearchHandler();return false;">
+                <label>ブランド</label>
+                <input type="text" id="txtbox-brand" name="param" placeholder="NIKE">
+                <label style="font-size:0.8em; color: gray;">NIKE, adidas, REMME, ONITSUKA TIGER, ...</label><br>
+                <label>ジャンル</label>
+                <div id="genre-select-box">
+                    <!-- ジャンル選択の関する要素はこのdivの中に書く -->
+                    <input type="checkbox" class="genre" value="スニーカー">スニーカー
+                    <input type="checkbox" class="genre" value="ブーツ">ブーツ
+                    <input type="checkbox" class="genre" value="サンダル">サンダル
+                    <input type="checkbox" class="genre" value="パンプス">パンプス
+                    <input type="checkbox" class="genre" value="ローファー">ローファー
+                    <input type="checkbox" class="genre" value="ブーティ">ブーティ
+                    <input type="checkbox" class="genre" value="スリッポン">スリッポン
+                    <input type="checkbox" class="genre" value="ドレスシューズ">ドレスシューズ
+                    <input type="checkbox" class="genre" value="レインシューズ">レインシューズ
+                    <input type="checkbox" class="genre" value="バレエシューズ">バレエシューズ
+                    <input type="checkbox" class="genre" value="モカシン/デッキシューズ">モカシン/デッキシューズ
+                    <input type="checkbox" class="genre" value="その他シューズ">その他シューズ
+                    <input type="checkbox" class="genre" value="シューケア/シューズ小物">シューケア/シューズ小物
+                </div>
+                <label>価格帯</label>
+                <input type="text" id="txtbox-lowest" name="param" placeholder="0">
+                <label>〜</label>
+                <input type="text" id="txtbox-highest" name="param" placeholder="10000">
+                <input type="submit" value="Search" class="btn-search">
+            </form>
+        </div>
+
+        <div class="sub-controll-box">
+            <div id="order-box">
+                <span>並び替え</span>
+                <select id="order" onChange="onChangeSortHandler()">
+                    <option value="none">なし</option>
+                    <option value="popu">人気順</option>
+                    <option value="plow">価格の安い順</option>
+                    <option value="phigh">価格の高い順</option>
+                </select>
+            </div>
+            <div id="item-num">-件Hit!!!</div>
+        </div>
+
+        <!-- <div id="loading-icon" style="text-align: center; visibility: hidden;"> -->
+        <div id="loading-icon" style="text-align: center; display: none;">
+            <img src='./assets/img/loading.gif'>
+        </div>
+
+        <div id="table-wrapper"></div>
+
+    </div>
+
+    <div id=footer>
+        <a>©︎2020 ISDL, Created by H.Yoneda, S.Yasoda and Y.Maeda</a>
+        <br>
+        <a>Authorized by Ass. Prof., Keiko Ono</a>
+    </div>
+</body>
+
+</html>
